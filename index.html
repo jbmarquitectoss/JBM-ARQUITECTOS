@@ -45,13 +45,41 @@
       "addressCountry":"MX"
     },
     "sameAs":[
-      "https://www.instagram.com/jbm_arquitectos/",
+      "https://www.instagram.com/jbmarquitectos.mx/",
       "https://www.facebook.com/profile.php?id=100082987226269",
       "https://www.tiktok.com/@jbm_arquitectoss"
     ]
   }
-  </script>
-<meta content="index, follow, max-image-preview:large" name="robots"/></head>
+</script>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<style>
+  .v4-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .hero .hero-image{z-index:0}
+  .hero.has-video .hero-image{opacity:0}
+  .v4-sound{position:absolute;z-index:5;right:var(--pad);top:8rem;border:1px solid rgba(255,255,255,.45);background:rgba(10,10,9,.25);backdrop-filter:blur(10px);color:#fff;padding:.65rem .85rem;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;cursor:pointer}
+  .trust-section{background:#11110f;color:#fff}
+  .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.18);border-left:1px solid rgba(255,255,255,.18)}
+  .trust-card{min-height:250px;padding:2.3rem;border-right:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18);display:flex;flex-direction:column;justify-content:space-between}
+  .trust-card span{font-size:.65rem;letter-spacing:.16em;color:rgba(255,255,255,.55)}
+  .trust-card h3{font-family:var(--display);font-size:clamp(1.8rem,3vw,3rem);font-weight:400;margin:1.5rem 0 .8rem}
+  .trust-card p{color:rgba(255,255,255,.62);margin:0}
+  .reviews-v4{background:#e8e2d6}
+  .reviews-v4-grid{display:grid;grid-template-columns:.65fr 1.35fr;gap:clamp(3rem,8vw,9rem);align-items:start}
+  .reviews-score strong{display:block;font-family:var(--display);font-size:clamp(5rem,10vw,10rem);line-height:.85;font-weight:400}
+  .reviews-score span{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase}
+  .reviews-list{display:grid;gap:1.2rem}
+  .review-card{padding:2rem;border-top:1px solid var(--line);background:rgba(255,255,255,.35)}
+  .review-card .stars{letter-spacing:.14em;margin-bottom:1.2rem}
+  .review-card blockquote{font-family:var(--display);font-size:clamp(1.55rem,2.4vw,2.4rem);line-height:1.25;margin:0 0 1.5rem}
+  .review-card footer{padding:0;background:none;color:var(--ink);display:block}
+  .review-card footer p{text-align:left;color:var(--muted);margin:0}
+  .cta-v4{min-height:78svh;background:#11110f;color:#fff;display:flex;align-items:center}
+  .cta-v4 .display{max-width:1100px}
+  .cta-v4 .hero-actions{margin-top:2.5rem}
+  @media(max-width:900px){.trust-grid{grid-template-columns:1fr 1fr}.reviews-v4-grid{grid-template-columns:1fr}}
+  @media(max-width:640px){.trust-grid{grid-template-columns:1fr}.v4-sound{top:auto;bottom:1.2rem;right:1.2rem}.cta-v4{min-height:auto}}
+</style>
+</head>
 <body><a class="skip-link" href="#contenido">Saltar al contenido</a>
 <div aria-hidden="true" class="page-loader"><span>JBM</span></div>
 <header class="header" data-header="">
@@ -65,13 +93,16 @@
 <a href="#proyectos">Proyectos</a>
 <a href="#estudio">Estudio</a>
 <a href="#servicios">Servicios</a>
+<a href="#opiniones">Opiniones</a>
 <a href="#contacto">Contacto</a><a class="menu-booking" href="https://calendar.app.google/h7XwWw9xizAmMNz38" rel="noopener" target="_blank">Agendar cita ↗</a>
 </nav>
 </header>
 <main id="contenido">
 <section class="hero" id="inicio">
+<video class="v4-hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/images/hero.webp"><source src="jbm-hero.mp4" type="video/mp4"/></video>
 <div class="hero-image" data-parallax=""></div>
 <div class="hero-shade"></div>
+<button class="v4-sound" type="button" aria-label="Activar sonido">Sonido off</button>
 <div class="hero-copy">
 <p class="kicker reveal">SAN JOSÉ ITURBIDE · GUANAJUATO</p>
 <h1 class="reveal">Arquitectura<br/><em>que permanece.</em></h1>
@@ -106,11 +137,7 @@
 </a>
 <div class="featured-meta">
 <div><span>01</span><h2>CASA GH</h2></div>
-<div class="meta-right">
-<p>Residencial Villa Corzo</p>
-<p>San José Iturbide, Gto.</p>
-<p>2026 · 320 m²</p>
-</div>
+<div class="meta-right"><p>Residencial Villa Corzo</p><p>San José Iturbide, Gto.</p><p>2026 · 320 m²</p></div>
 </div>
 </article>
 <article class="portfolio-card reveal">
@@ -120,19 +147,13 @@
 </a>
 <div class="featured-meta">
 <div><span>02</span><h2>CASA BAEZA</h2></div>
-<div class="meta-right">
-<p>Fraccionamiento San José Campestre</p>
-<p>San José Iturbide, Gto.</p>
-<p>2024 · 170 m²</p>
-</div>
+<div class="meta-right"><p>Fraccionamiento San José Campestre</p><p>San José Iturbide, Gto.</p><p>2024 · 170 m²</p></div>
 </div>
 </article>
 </div>
 </section>
 <section class="studio" id="estudio">
-<div class="studio-image reveal">
-<img alt="Interior de doble altura con madera" loading="lazy" src="assets/images/wood-interior.webp"/>
-</div>
+<div class="studio-image reveal"><img alt="Interior de doble altura con madera" loading="lazy" src="assets/images/wood-interior.webp"/></div>
 <div class="studio-copy section">
 <p class="index-label reveal">03 / El estudio</p>
 <h2 class="display reveal">Diseño integral, atención personal.</h2>
@@ -149,11 +170,9 @@
 <article class="process-step reveal"><span>03</span><h3>Documentamos</h3><p>Convertimos la propuesta en planos, especificaciones y detalles listos para construir.</p></article>
 <article class="process-step reveal"><span>04</span><h3>Materializamos</h3><p>Coordinamos y supervisamos la ejecución para proteger la intención del proyecto.</p></article>
 </div>
-</section><section class="services section" id="servicios">
-<div class="section-top reveal">
-<p class="index-label">05 / Servicios</p>
-<p class="section-note">Una sola visión durante todo el proceso.</p>
-</div>
+</section>
+<section class="services section" id="servicios">
+<div class="section-top reveal"><p class="index-label">05 / Servicios</p><p class="section-note">Una sola visión durante todo el proceso.</p></div>
 <div class="service-rows">
 <article class="service reveal"><span>01</span><h3>Diseño arquitectónico</h3><p>Concepto, anteproyecto, desarrollo y proyecto ejecutivo.</p></article>
 <article class="service reveal"><span>02</span><h3>Interiorismo</h3><p>Materiales, iluminación, mobiliario y atmósferas.</p></article>
@@ -161,114 +180,65 @@
 <article class="service reveal"><span>04</span><h3>Supervisión de obra</h3><p>Seguimiento técnico para proteger la intención del proyecto.</p></article>
 </div>
 </section>
-<section class="quote-section">
-<div class="quote-image" data-parallax=""></div>
-<div class="quote-shade"></div>
-<blockquote class="reveal">“La belleza es el resultado de resolver bien.”</blockquote>
+<section class="trust-section section">
+<div class="section-top reveal"><p class="index-label">06 / Por qué JBM</p><p class="section-note">Una atención cercana y una sola visión para todo el proyecto.</p></div>
+<div class="trust-grid">
+<article class="trust-card reveal"><span>01</span><div><h3>Diseño personalizado</h3><p>Cada propuesta responde a tu terreno, necesidades y forma de vivir.</p></div></article>
+<article class="trust-card reveal"><span>02</span><div><h3>Proyecto integral</h3><p>Arquitectura, interiores, visualización y coordinación en un mismo proceso.</p></div></article>
+<article class="trust-card reveal"><span>03</span><div><h3>Decisiones claras</h3><p>Renders y documentación para comprender el proyecto antes de construir.</p></div></article>
+<article class="trust-card reveal"><span>04</span><div><h3>Acompañamiento</h3><p>Comunicación directa y seguimiento profesional de principio a fin.</p></div></article>
+</div>
 </section>
+<section class="reviews-v4 section" id="opiniones">
+<div class="reviews-v4-grid">
+<div class="reviews-score reveal"><p class="index-label">07 / Opiniones</p><strong>5.0</strong><span>Google · 5 reseñas</span><div style="margin-top:2rem"><a class="underlink dark" href="https://www.google.com/maps/place/JBM+ARQUITECTOS/@20.9935165,-100.3970036,17z/" target="_blank" rel="noopener">Ver todas las opiniones ↗</a></div></div>
+<div class="reviews-list">
+<article class="review-card reveal"><div class="stars">★★★★★</div><blockquote>“Desde el primer día fue evidente su profesionalismo y la apertura de criterio que los caracteriza.”</blockquote><footer><p>Julio Cesar Chavez · Opinión en Google</p></footer></article>
+<article class="review-card reveal"><div class="stars">★★★★★</div><blockquote>“Trabajar con JBM ha sido una experiencia excepcional. Interpretaron perfectamente mis ideas.”</blockquote><footer><p>Rojas Antonio · Opinión en Google</p></footer></article>
+<a class="btn btn-dark" href="https://g.page/r/CW4ljIvNq_vCEAE/review" target="_blank" rel="noopener">Dejar una opinión ↗</a>
+</div>
+</div>
+</section>
+<section class="quote-section"><div class="quote-image" data-parallax=""></div><div class="quote-shade"></div><blockquote class="reveal">“La belleza es el resultado de resolver bien.”</blockquote></section>
 <section class="faq section" id="preguntas">
-<div class="section-top reveal"><p class="index-label">06 / Preguntas frecuentes</p><p class="section-note">Lo esencial antes de comenzar.</p></div>
+<div class="section-top reveal"><p class="index-label">08 / Preguntas frecuentes</p><p class="section-note">Lo esencial antes de comenzar.</p></div>
 <div class="faq-list">
 <details class="reveal"><summary>¿En qué ciudades trabajan?</summary><p>La base del estudio está en San José Iturbide, Guanajuato. Atendemos proyectos en el Bajío y evaluamos proyectos en otras ubicaciones según su alcance.</p></details>
 <details class="reveal"><summary>¿Pueden encargarse del diseño y de la obra?</summary><p>Sí. Podemos desarrollar arquitectura, interiorismo, proyecto ejecutivo, coordinación y ejecución de obra bajo una visión integral.</p></details>
-<details class="reveal"><summary>¿Cómo comienza un proyecto?</summary><p>Iniciamos con una reunión para conocer necesidades, ubicación, superficie, presupuesto y tiempos. Después definimos el alcance y presentamos una propuesta de servicios.</p></details>
-<details class="reveal"><summary>¿También realizan remodelaciones?</summary><p>Sí. Analizamos el inmueble existente y planteamos intervenciones que mejoren funcionamiento, imagen, iluminación y aprovechamiento del espacio.</p></details>
+<details class="reveal"><summary>¿Cómo comienza un proyecto?</summary><p>Iniciamos con una reunión para conocer necesidades, ubicación, superficie, presupuesto y tiempos.</p></details>
+<details class="reveal"><summary>¿También realizan remodelaciones?</summary><p>Sí. Analizamos el inmueble existente y planteamos intervenciones que mejoren funcionamiento, imagen e iluminación.</p></details>
 </div>
-</section><section class="contact section" id="contacto">
-<p class="index-label reveal">07 / Contacto</p>
-<div class="contact-heading">
-<h2 class="display reveal">Construyamos algo que tenga sentido.</h2>
-<p class="reveal">Cuéntanos sobre tu proyecto. Te contactaremos para conocer tus necesidades, ubicación, alcance y próximos pasos.</p>
-</div>
-<div class="booking-card reveal">
-<div>
-<span class="booking-eyebrow">Agenda en línea</span>
-<h3>Elige el día y horario que mejor te funcione.</h3>
-<p>Reserva directamente una cita con JBM ARQUITECTOS para conversar sobre tu proyecto.</p>
-</div>
-<a class="btn btn-dark booking-button" href="https://calendar.app.google/h7XwWw9xizAmMNz38" rel="noopener" target="_blank">Agendar una cita ↗</a>
-</div>
+</section>
+<section class="cta-v4 section"><div><p class="index-label reveal">09 / Tu proyecto</p><h2 class="display reveal">El siguiente proyecto que aparecerá aquí podría ser el tuyo.</h2><div class="hero-actions reveal"><a class="btn btn-light" href="https://calendar.app.google/h7XwWw9xizAmMNz38" target="_blank" rel="noopener">Agendar una reunión ↗</a><a class="underlink" href="https://wa.me/524423218552?text=Hola%20JBM%20ARQUITECTOS,%20quiero%20platicar%20sobre%20mi%20proyecto." target="_blank" rel="noopener">Escribir por WhatsApp ↗</a></div></div></section>
+<section class="contact section" id="contacto">
+<p class="index-label reveal">10 / Contacto</p>
+<div class="contact-heading"><h2 class="display reveal">Construyamos algo que tenga sentido.</h2><p class="reveal">Cuéntanos sobre tu proyecto. Te contactaremos para conocer tus necesidades, ubicación, alcance y próximos pasos.</p></div>
+<div class="booking-card reveal"><div><span class="booking-eyebrow">Agenda en línea</span><h3>Elige el día y horario que mejor te funcione.</h3><p>Reserva directamente una cita con JBM ARQUITECTOS.</p></div><a class="btn btn-dark booking-button" href="https://calendar.app.google/h7XwWw9xizAmMNz38" rel="noopener" target="_blank">Agendar una cita ↗</a></div>
 <div class="contact-layout">
-<form class="contact-form reveal" id="contact-form">
-<div class="form-grid">
-<label>
-<span>Nombre *</span>
-<input autocomplete="name" name="nombre" required="" type="text"/>
-</label>
-<label>
-<span>Teléfono / WhatsApp *</span>
-<input autocomplete="tel" name="telefono" required="" type="tel"/>
-</label>
-<label>
-<span>Correo electrónico *</span>
-<input autocomplete="email" name="correo" required="" type="email"/>
-</label>
-<label>
-<span>Ciudad del proyecto</span>
-<input autocomplete="address-level2" name="ciudad" type="text"/>
-</label>
-<label>
-<span>Tipo de proyecto</span>
-<select name="tipo">
-<option value="">Seleccionar</option>
-<option>Casa habitación</option>
-<option>Remodelación</option>
-<option>Interiorismo</option>
-<option>Proyecto comercial</option>
-<option>Otro</option>
-</select>
-</label>
-<label>
-<span>Etapa actual</span>
-<select name="etapa">
-<option value="">Seleccionar</option>
-<option>Buscando terreno</option>
-<option>Ya cuento con terreno</option>
-<option>Tengo un anteproyecto</option>
-<option>Proyecto en construcción</option>
-<option>Solo interiorismo</option>
-</select>
-</label>
-<label class="form-full">
-<span>Cuéntanos sobre tu proyecto *</span>
-<textarea name="mensaje" placeholder="Superficie aproximada, necesidades, fecha prevista y cualquier detalle importante." required="" rows="6"></textarea>
-</label>
-</div>
-<div class="form-actions">
-<button class="btn btn-dark" type="submit">Enviar solicitud</button>
-<p class="form-note">Al enviar, se abrirá WhatsApp con la información capturada. No se almacenan tus datos en este sitio.</p>
-</div>
-<p aria-live="polite" class="form-status" id="form-status"></p>
-</form>
-<aside class="contact-details reveal">
-<div><span>WhatsApp</span><a href="https://wa.me/524423218552" rel="noopener" target="_blank">+52 442 321 8552 ↗</a></div>
-<div><span>Oficina</span><a href="tel:+524191932836">(419) 193 2836</a></div>
-<div><span>Correo</span><a href="mailto:jbm.arquitectoss@gmail.com">jbm.arquitectoss@gmail.com</a></div>
-<div><span>Ubicación</span><p>San José Iturbide, Guanajuato</p></div>
-<div><span>Citas</span><a href="https://calendar.app.google/h7XwWw9xizAmMNz38" rel="noopener" target="_blank">Consultar disponibilidad ↗</a></div>
-<div class="contact-quick">
-<span>Respuesta directa</span>
-<a class="underlink dark" href="https://wa.me/524423218552?text=Hola%20JBM%20ARQUITECTOS,%20quiero%20platicar%20sobre%20mi%20proyecto." rel="noopener" target="_blank">Escribir por WhatsApp ↗</a>
-</div>
-</aside>
+<form class="contact-form reveal" id="contact-form"><div class="form-grid"><label><span>Nombre *</span><input autocomplete="name" name="nombre" required type="text"/></label><label><span>Teléfono / WhatsApp *</span><input autocomplete="tel" name="telefono" required type="tel"/></label><label><span>Correo electrónico *</span><input autocomplete="email" name="correo" required type="email"/></label><label><span>Ciudad del proyecto</span><input autocomplete="address-level2" name="ciudad" type="text"/></label><label><span>Tipo de proyecto</span><select name="tipo"><option value="">Seleccionar</option><option>Casa habitación</option><option>Remodelación</option><option>Interiorismo</option><option>Proyecto comercial</option><option>Otro</option></select></label><label><span>Etapa actual</span><select name="etapa"><option value="">Seleccionar</option><option>Buscando terreno</option><option>Ya cuento con terreno</option><option>Tengo un anteproyecto</option><option>Proyecto en construcción</option><option>Solo interiorismo</option></select></label><label class="form-full"><span>Cuéntanos sobre tu proyecto *</span><textarea name="mensaje" placeholder="Superficie aproximada, necesidades, fecha prevista y cualquier detalle importante." required rows="6"></textarea></label></div><div class="form-actions"><button class="btn btn-dark" type="submit">Enviar solicitud</button><p class="form-note">Al enviar, se abrirá WhatsApp con la información capturada.</p></div><p aria-live="polite" class="form-status" id="form-status"></p></form>
+<aside class="contact-details reveal"><div><span>WhatsApp</span><a href="https://wa.me/524423218552" rel="noopener" target="_blank">+52 442 321 8552 ↗</a></div><div><span>Oficina</span><a href="tel:+524191932836">(419) 193 2836</a></div><div><span>Correo</span><a href="mailto:jbm.arquitectoss@gmail.com">jbm.arquitectoss@gmail.com</a></div><div><span>Ubicación</span><p>San José Iturbide, Guanajuato</p></div><div><span>Citas</span><a href="https://calendar.app.google/h7XwWw9xizAmMNz38" rel="noopener" target="_blank">Consultar disponibilidad ↗</a></div></aside>
 </div>
 </section>
 </main>
-<footer>
-<img alt="JBM ARQUITECTOS" src="assets/images/logo-horizontal.png"/>
-<div><p>Arquitectura · Interiorismo · Proyecto integral</p><p>© <span data-year=""></span> JBM ARQUITECTOS</p></div>
-</footer>
-<div aria-hidden="true" aria-label="Galería" class="lightbox" role="dialog">
-<button aria-label="Cerrar galería" class="lightbox-close">×</button>
-<button aria-label="Imagen anterior" class="lightbox-prev">←</button>
-<figure><img alt="" src=""/><figcaption></figcaption></figure>
-<button aria-label="Imagen siguiente" class="lightbox-next">→</button>
-</div>
-<a aria-label="Escribir a JBM ARQUITECTOS por WhatsApp" class="whatsapp-float" href="https://wa.me/524423218552?text=Hola%20JBM%20ARQUITECTOS,%20quiero%20información%20para%20mi%20proyecto." rel="noopener" target="_blank">
-<svg aria-hidden="true" viewbox="0 0 32 32">
-<path d="M16.02 3.2c-7.06 0-12.8 5.5-12.8 12.27 0 2.42.74 4.78 2.13 6.77L3 29l7.05-2.24a13.18 13.18 0 0 0 5.96 1.42h.01c7.05 0 12.79-5.5 12.79-12.27S23.07 3.2 16.02 3.2Zm0 22.91h-.01a11.03 11.03 0 0 1-5.62-1.55l-.4-.23-4.18 1.33 1.36-3.94-.26-.4a10.05 10.05 0 0 1-1.62-5.45c0-5.63 4.81-10.21 10.73-10.21 5.91 0 10.72 4.58 10.72 10.21 0 5.64-4.81 10.24-10.72 10.24Zm5.88-7.65c-.32-.15-1.9-.9-2.2-1-.29-.1-.5-.15-.71.15-.21.3-.82 1-.99 1.2-.18.2-.37.22-.69.07-.32-.15-1.35-.48-2.57-1.52-.95-.81-1.59-1.82-1.78-2.13-.18-.3-.02-.46.14-.61.15-.13.32-.35.48-.52.16-.18.21-.3.32-.51.11-.2.05-.38-.03-.53-.08-.15-.71-1.64-.97-2.24-.25-.59-.51-.51-.71-.52h-.6c-.21 0-.55.08-.84.38-.29.3-1.1 1.03-1.1 2.51 0 1.48 1.13 2.91 1.29 3.11.16.2 2.23 3.26 5.4 4.57.75.31 1.34.5 1.8.64.76.23 1.44.2 1.99.12.61-.09 1.9-.74 2.17-1.46.27-.72.27-1.33.19-1.46-.08-.13-.29-.2-.61-.35Z"></path>
-</svg>
-</a>
+<footer><img alt="JBM ARQUITECTOS" src="assets/images/logo-horizontal.png"/><div><p>Arquitectura · Interiorismo · Proyecto integral</p><p>© <span data-year=""></span> JBM ARQUITECTOS</p></div></footer>
+<div aria-hidden="true" aria-label="Galería" class="lightbox" role="dialog"><button aria-label="Cerrar galería" class="lightbox-close">×</button><button aria-label="Imagen anterior" class="lightbox-prev">←</button><figure><img alt="" src=""/><figcaption></figcaption></figure><button aria-label="Imagen siguiente" class="lightbox-next">→</button></div>
+<a aria-label="Escribir a JBM ARQUITECTOS por WhatsApp" class="whatsapp-float" href="https://wa.me/524423218552?text=Hola%20JBM%20ARQUITECTOS,%20quiero%20información%20para%20mi%20proyecto." rel="noopener" target="_blank"><svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16.02 3.2c-7.06 0-12.8 5.5-12.8 12.27 0 2.42.74 4.78 2.13 6.77L3 29l7.05-2.24a13.18 13.18 0 0 0 5.96 1.42h.01c7.05 0 12.79-5.5 12.79-12.27S23.07 3.2 16.02 3.2Zm0 22.91h-.01a11.03 11.03 0 0 1-5.62-1.55l-.4-.23-4.18 1.33 1.36-3.94-.26-.4a10.05 10.05 0 0 1-1.62-5.45c0-5.63 4.81-10.21 10.73-10.21 5.91 0 10.72 4.58 10.72 10.21 0 5.64-4.81 10.24-10.72 10.24Z"></path></svg></a>
 <script src="assets/js/site.js"></script>
-<div aria-label="Acciones de contacto" class="mobile-contact-bar"><a href="https://wa.me/524423218552?text=Hola%20JBM%20ARQUITECTOS,%20quiero%20platicar%20sobre%20mi%20proyecto." rel="noopener" target="_blank">WhatsApp</a><a href="https://calendar.app.google/h7XwWw9xizAmMNz38" rel="noopener" target="_blank">Agendar cita</a></div></body>
+<script>
+  const heroVideo=document.querySelector('.v4-hero-video');
+  const soundButton=document.querySelector('.v4-sound');
+  if(heroVideo){
+    heroVideo.addEventListener('canplay',()=>document.querySelector('.hero')?.classList.add('has-video'));
+    heroVideo.play().catch(()=>{});
+  }
+  soundButton?.addEventListener('click',()=>{
+    if(!heroVideo)return;
+    heroVideo.muted=!heroVideo.muted;
+    soundButton.textContent=heroVideo.muted?'Sonido off':'Sonido on';
+    soundButton.setAttribute('aria-label',heroVideo.muted?'Activar sonido':'Desactivar sonido');
+    if(!heroVideo.muted)heroVideo.play().catch(()=>{});
+  });
+</script>
+<div aria-label="Acciones de contacto" class="mobile-contact-bar"><a href="https://wa.me/524423218552?text=Hola%20JBM%20ARQUITECTOS,%20quiero%20platicar%20sobre%20mi%20proyecto." rel="noopener" target="_blank">WhatsApp</a><a href="https://calendar.app.google/h7XwWw9xizAmMNz38" rel="noopener" target="_blank">Agendar cita</a></div>
+</body>
 </html>
