@@ -34,6 +34,7 @@ jobs:
           mkdir -p _site
           cp -R "PAGINA OFICIAL JBM/JBM-ARQUITECTOS-Web-FINAL/JBM-ARQUITECTOS-Web-FINAL/." _site/
           python tools/inject_instagram.py
+          python tools/inject_location.py
           touch _site/.nojekyll
 
       - name: Subir archivos del sitio
