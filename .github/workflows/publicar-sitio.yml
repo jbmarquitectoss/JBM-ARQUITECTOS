@@ -29,15 +29,11 @@ jobs:
         with:
           enablement: true
 
-      - name: Preparar sitio
+      - name: Preparar sitio V3
         run: |
           mkdir -p _site
           cp -R "PAGINA OFICIAL JBM/JBM-ARQUITECTOS-Web-FINAL/JBM-ARQUITECTOS-Web-FINAL/." _site/
-          python tools/inject_experience.py
-          python tools/inject_interactions.py
-          python tools/inject_instagram.py
-          python tools/inject_location.py
-          python tools/inject_reviews.py
+          python tools/build_v3.py
           touch _site/.nojekyll
 
       - name: Subir archivos del sitio
