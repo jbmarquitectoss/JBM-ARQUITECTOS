@@ -38,6 +38,7 @@ jobs:
             --exclude='_site' \
             --exclude='tools' \
             ./ _site/
+          python tools/apply_jbm_21.py
           touch _site/.nojekyll
 
       - name: Subir archivos del sitio
