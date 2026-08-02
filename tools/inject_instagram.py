@@ -2,7 +2,7 @@ from pathlib import Path
 
 INDEX = Path("_site/index.html")
 
-section = r'''
+instagram_section = r'''
 <section class="instagram-section section" id="instagram" aria-labelledby="instagram-title">
   <div class="instagram-head reveal">
     <div>
@@ -43,7 +43,16 @@ section = r'''
 '''
 
 styles = r'''
-<style id="instagram-section-styles">
+<style id="jbm-cinematic-styles">
+.hero{background:#111}
+.hero-image{background-image:url("assets/images/hero.webp")}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;background:#111}
+.hero-video-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+.hero-shade{background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.26) 58%,rgba(0,0,0,.08) 100%),linear-gradient(0deg,rgba(0,0,0,.42),transparent 46%)}
+.hero-copy{max-width:1050px}
+.hero-copy h1{letter-spacing:-.035em}
+.hero-video-note{display:inline-flex;align-items:center;gap:.65rem;margin-top:1.35rem;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.hero-video-note:before{content:"";width:2.6rem;height:1px;background:currentColor}
 .instagram-section{position:relative;overflow:hidden;background:#ece6da}
 .instagram-section:before{content:"JBM";position:absolute;right:-.04em;top:-.22em;font-family:var(--display);font-size:clamp(10rem,27vw,31rem);line-height:1;color:rgba(17,17,15,.035);pointer-events:none}
 .instagram-head{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(240px,.65fr);gap:clamp(2rem,7vw,8rem);align-items:end;margin-bottom:clamp(3rem,7vw,7rem)}
@@ -64,31 +73,33 @@ styles = r'''
 .instagram-card:hover .instagram-overlay,.instagram-card:focus-visible .instagram-overlay{opacity:1}
 .instagram-footer{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:2rem;margin-top:clamp(2rem,4vw,3.5rem);padding-top:1.5rem;border-top:1px solid var(--line)}
 .instagram-footer p{margin:0;color:var(--muted);max-width:520px}
-@media(max-width:900px){
-  .instagram-head{grid-template-columns:1fr;align-items:start}
-  .instagram-editorial-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
-  .instagram-card-main{grid-column:1/-1;grid-row:auto;aspect-ratio:16/10}
-  .instagram-card:not(.instagram-card-main){aspect-ratio:4/5}
-}
-@media(max-width:620px){
-  .instagram-editorial-grid{grid-template-columns:1fr}
-  .instagram-card,.instagram-card-main{grid-column:auto;aspect-ratio:4/5}
-  .instagram-footer{align-items:flex-start;flex-direction:column}
-  .instagram-footer .btn{width:100%}
-}
+@media(max-width:900px){.instagram-head{grid-template-columns:1fr;align-items:start}.instagram-editorial-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.instagram-card-main{grid-column:1/-1;grid-row:auto;aspect-ratio:16/10}.instagram-card:not(.instagram-card-main){aspect-ratio:4/5}}
+@media(max-width:620px){.hero-video{object-position:center}.instagram-editorial-grid{grid-template-columns:1fr}.instagram-card,.instagram-card-main{grid-column:auto;aspect-ratio:4/5}.instagram-footer{align-items:flex-start;flex-direction:column}.instagram-footer .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){.hero-video{display:none}}
 </style>
 '''
 
 html = INDEX.read_text(encoding="utf-8")
-marker = '<section class="contact section" id="contacto">'
 
+hero_marker = '<div class="hero-image" data-parallax=""></div>'
+hero_video = '''<video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/images/hero.webp" aria-label="Recorrido arquitectónico de JBM ARQUITECTOS">
+  <source src="assets/video/jbm-hero.mp4" type="video/mp4">
+</video>'''
+if hero_marker in html and 'class="hero-video"' not in html:
+    html = html.replace(hero_marker, hero_video, 1)
+
+lead_marker = '<p class="hero-lead reveal">Diseñamos espacios contemporáneos donde la luz, los materiales y la funcionalidad construyen una experiencia única.</p>'
+if lead_marker in html and 'hero-video-note' not in html:
+    html = html.replace(lead_marker, lead_marker + '\n<p class="hero-video-note reveal">Arquitectura · Interiorismo · Ejecución</p>', 1)
+
+contact_marker = '<section class="contact section" id="contacto">'
 if 'id="instagram"' not in html:
-    if marker not in html:
+    if contact_marker not in html:
         raise SystemExit("No se encontró la sección de contacto para insertar Instagram")
-    html = html.replace(marker, section + "\n" + marker, 1)
+    html = html.replace(contact_marker, instagram_section + "\n" + contact_marker, 1)
 
-if 'id="instagram-section-styles"' not in html:
+if 'id="jbm-cinematic-styles"' not in html:
     html = html.replace('</head>', styles + '\n</head>', 1)
 
 INDEX.write_text(html, encoding="utf-8")
-print("Instagram actualizado: perfil y publicaciones correctas")
+print("Portada cinematográfica e Instagram integrados")
