@@ -33,6 +33,8 @@ jobs:
         run: |
           mkdir -p _site
           cp -R "PAGINA OFICIAL JBM/JBM-ARQUITECTOS-Web-FINAL/JBM-ARQUITECTOS-Web-FINAL/." _site/
+          cp -f jbm-hero.mp4 _site/jbm-hero.mp4 || true
+          python tools/build_v4.py
           python tools/inject_instagram.py
           python tools/inject_location.py
           python tools/inject_reviews.py
