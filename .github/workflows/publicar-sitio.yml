@@ -29,11 +29,15 @@ jobs:
         with:
           enablement: true
 
-      - name: Preparar sitio V3
+      - name: Preparar sitio
         run: |
           mkdir -p _site
-          cp -R "PAGINA OFICIAL JBM/JBM-ARQUITECTOS-Web-FINAL/JBM-ARQUITECTOS-Web-FINAL/." _site/
-          python tools/build_v3.py
+          rsync -av \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='_site' \
+            --exclude='tools' \
+            ./ _site/
           touch _site/.nojekyll
 
       - name: Subir archivos del sitio
