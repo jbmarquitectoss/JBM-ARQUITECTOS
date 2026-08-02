@@ -1,0 +1,16 @@
+JBM ARQUITECTOS — VERSIÓN FINAL
+
+Contenido:
+- Inicio con proyectos CASA GH y CASA BAEZA.
+- CASA GH con galería completa de 12 imágenes.
+- CASA BAEZA con proyecto terminado y proceso de ejecución.
+- Agenda en línea integrada.
+- Formulario conectado a WhatsApp.
+- Sección de proceso de trabajo.
+- Preguntas frecuentes.
+- Navegación entre proyectos.
+- Barra de contacto móvil.
+- Mejoras de accesibilidad, SEO y rendimiento.
+
+Para visualizar: abrir index.html.
+Para publicar: subir todo el contenido de esta carpeta conservando su estructura.
