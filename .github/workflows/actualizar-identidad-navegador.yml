@@ -1,0 +1,37 @@
+name: Actualizar identidad del navegador
+
+on:
+  push:
+    paths:
+      - '.github/workflows/actualizar-identidad-navegador.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+      - name: Actualizar título y favicon
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('<title>JBM ARQUITECTOS | Arquitectura e interiorismo en Guanajuato</title>', '<title>JBM ARQUITECTOS | Arquitectura contemporánea</title>')
+          s = s.replace('<link href="favicon.png" rel="icon"/>', '<link href="favicon-jbm.svg" rel="icon" type="image/svg+xml"/>')
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Publicar cambio
+        run: |
+          git config user.name "JBM Web Bot"
+          git config user.email "actions@github.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "Sin cambios pendientes"
+          else
+            git commit -m "Actualizar título y favicon de JBM"
+            git push
+          fi
