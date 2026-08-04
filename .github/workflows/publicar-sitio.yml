@@ -49,11 +49,11 @@ jobs:
           )
           s = s.replace(
               'href="favicon-jbm.svg" rel="icon" type="image/svg+xml"',
-              'href="favicon-jbm.svg?v=20260804-2" rel="icon" type="image/svg+xml"'
+              'href="favicon-jbm.svg?v=20260804-3" rel="icon" type="image/svg+xml" sizes="any"'
           )
           s = s.replace(
               'href="favicon.png" rel="icon"',
-              'href="favicon-jbm.svg?v=20260804-2" rel="icon" type="image/svg+xml"'
+              'href="favicon-jbm.svg?v=20260804-3" rel="icon" type="image/svg+xml" sizes="any"'
           )
           p.write_text(s, encoding='utf-8')
           PY
