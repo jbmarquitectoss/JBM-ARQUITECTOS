@@ -39,6 +39,24 @@ jobs:
             --exclude='tools' \
             ./ _site/
           python tools/apply_jbm_21.py
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('_site/index.html')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace(
+              '<title>JBM ARQUITECTOS | Arquitectura e interiorismo en Guanajuato</title>',
+              '<title>JBM ARQUITECTOS | Arquitectura contemporánea</title>'
+          )
+          s = s.replace(
+              'href="favicon-jbm.svg" rel="icon" type="image/svg+xml"',
+              'href="favicon-jbm.svg?v=20260804-2" rel="icon" type="image/svg+xml"'
+          )
+          s = s.replace(
+              'href="favicon.png" rel="icon"',
+              'href="favicon-jbm.svg?v=20260804-2" rel="icon" type="image/svg+xml"'
+          )
+          p.write_text(s, encoding='utf-8')
+          PY
           touch _site/.nojekyll
 
       - name: Subir archivos del sitio
