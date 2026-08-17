@@ -41,6 +41,7 @@ jobs:
           python tools/apply_jbm_21.py
           python3 - <<'PY'
           from pathlib import Path
+
           p = Path('_site/index.html')
           s = p.read_text(encoding='utf-8')
           s = s.replace(
@@ -56,6 +57,13 @@ jobs:
               'href="favicon-jbm.svg?v=20260804-3" rel="icon" type="image/svg+xml" sizes="any"'
           )
           p.write_text(s, encoding='utf-8')
+
+          analytics_tag = '<script src="assets/js/analytics.js"></script>'
+          for page in Path('_site').glob('*.html'):
+              html = page.read_text(encoding='utf-8')
+              if analytics_tag not in html:
+                  html = html.replace('</body>', analytics_tag + '\n</body>', 1)
+                  page.write_text(html, encoding='utf-8')
           PY
           touch _site/.nojekyll
 
