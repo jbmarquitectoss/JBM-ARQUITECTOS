@@ -9,6 +9,13 @@
     });
   }
 
+  function trackLead(leadType,params={}){
+    track("generate_lead",{
+      lead_type:leadType,
+      ...params
+    });
+  }
+
   const textOf=el=>(el?.textContent||"").trim().replace(/\s+/g," ").slice(0,120);
 
   document.addEventListener("click",event=>{
@@ -21,8 +28,10 @@
 
     if(href.includes("wa.me/")){
       track("whatsapp_click",params);
+      trackLead("whatsapp",params);
     }else if(href.includes("calendar.app.google")){
       track("booking_click",params);
+      trackLead("booking",params);
     }else if(href==="#proyectos"){
       track("portfolio_click",params);
     }else if(href.includes("casa-gh.html")){
@@ -37,10 +46,12 @@
   document.addEventListener("submit",event=>{
     if(event.target?.matches("#contact-form")){
       const form=new FormData(event.target);
-      track("contact_form_submit",{
+      const params={
         project_type:(form.get("tipo")||"no_indicado").toString(),
         project_city:(form.get("ciudad")||"no_indicada").toString()
-      });
+      };
+      track("contact_form_submit",params);
+      trackLead("contact_form",params);
     }
   });
 
