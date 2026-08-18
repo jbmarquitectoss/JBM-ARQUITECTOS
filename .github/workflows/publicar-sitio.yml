@@ -42,6 +42,9 @@ jobs:
           python tools/apply_estimator.py
           python3 - <<'PY'
           from pathlib import Path
+          import os
+
+          version = os.environ.get('GITHUB_SHA', 'jbm')[:10]
 
           p = Path('_site/index.html')
           s = p.read_text(encoding='utf-8')
@@ -57,12 +60,14 @@ jobs:
               'href="favicon.png" rel="icon"',
               'href="favicon-jbm.svg?v=20260804-3" rel="icon" type="image/svg+xml" sizes="any"'
           )
+          s = s.replace('assets/css/estimador.css', f'assets/css/estimador.css?v={version}')
+          s = s.replace('assets/js/estimador.js', f'assets/js/estimador.js?v={version}')
           p.write_text(s, encoding='utf-8')
 
-          analytics_tag = '<script src="assets/js/analytics.js"></script>'
+          analytics_tag = f'<script src="assets/js/analytics.js?v={version}"></script>'
           for page in Path('_site').glob('*.html'):
               html = page.read_text(encoding='utf-8')
-              if analytics_tag not in html:
+              if 'assets/js/analytics.js' not in html:
                   html = html.replace('</body>', analytics_tag + '\n</body>', 1)
                   page.write_text(html, encoding='utf-8')
           PY
