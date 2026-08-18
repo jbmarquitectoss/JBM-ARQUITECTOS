@@ -16,10 +16,19 @@ if faq_start != -1:
     if faq_end != -1:
         html = html[:faq_start] + html[faq_end + len('</section>'):]
 
+# Eliminar por completo la sección de opiniones y su acceso en el menú.
+reviews_start = html.find('<section class="reviews-v4 section" id="opiniones">')
+if reviews_start != -1:
+    reviews_end = html.find('</section>', reviews_start)
+    if reviews_end != -1:
+        html = html[:reviews_start] + html[reviews_end + len('</section>'):]
+
+html = html.replace('<a href="#opiniones">Opiniones</a>', '')
+
 section = r'''
 <section class="estimator-section section" id="estimador">
   <div class="section-top reveal">
-    <p class="index-label">08 / Estimador de inversión</p>
+    <p class="index-label">07 / Estimador de inversión</p>
     <p class="section-note">Una referencia inicial antes de preparar una cotización personalizada.</p>
   </div>
   <div class="estimator-intro">
@@ -128,10 +137,13 @@ if 'id="estimador"' not in html:
 if '<a href="#estimador">Estimador</a>' not in html:
     html = html.replace('<a href="#contacto">Contacto</a>', '<a href="#estimador">Estimador</a><a href="#contacto">Contacto</a>', 1)
 
-# Corregir numeración de versiones previas del despliegue.
-html = html.replace('09 / Estimador de inversión', '08 / Estimador de inversión')
-html = html.replace('10 / Tu proyecto', '09 / Tu proyecto')
-html = html.replace('11 / Contacto', '10 / Contacto')
+# Corregir numeración después de eliminar Opiniones y Preguntas frecuentes.
+for old in ('09 / Estimador de inversión', '08 / Estimador de inversión'):
+    html = html.replace(old, '07 / Estimador de inversión')
+for old in ('10 / Tu proyecto', '09 / Tu proyecto'):
+    html = html.replace(old, '08 / Tu proyecto')
+for old in ('11 / Contacto', '10 / Contacto'):
+    html = html.replace(old, '09 / Contacto')
 
 if js_tag not in html:
     html = html.replace('</body>', js_tag + '\n</body>', 1)
