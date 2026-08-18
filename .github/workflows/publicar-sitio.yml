@@ -39,6 +39,7 @@ jobs:
             --exclude='tools' \
             ./ _site/
           python tools/apply_jbm_21.py
+          python tools/apply_estimator.py
           python3 - <<'PY'
           from pathlib import Path
 
