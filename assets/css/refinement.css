@@ -10,7 +10,11 @@
 .construction-feature-actions{display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap;margin-top:2rem}
 .services .service-rows{border-top:1px solid var(--line)}
 .services .service{grid-template-columns:minmax(44px,.2fr) minmax(220px,.9fr) minmax(280px,1.4fr)}
+/* Proceso: títulos siempre sobre una sola línea y alineados */
+.work-process .process-step{min-width:0}
+.work-process .process-step h3{font-size:clamp(1.8rem,2.35vw,2.55rem);line-height:1;letter-spacing:-.035em;white-space:nowrap}
 .cta-v4{min-height:58svh!important}
 .cta-v4 .display{max-width:900px!important}
+@media(max-width:1000px){.work-process .process-step h3{font-size:clamp(1.9rem,4vw,2.6rem)}}
 @media(max-width:900px){.construction-feature{min-height:62svh}.services .service{grid-template-columns:52px 1fr}.services .service p{grid-column:2}}
-@media(max-width:640px){.construction-feature{min-height:70svh}.construction-feature-copy{padding:1.5rem}.construction-feature h2{font-size:clamp(2.7rem,13vw,4.8rem)}.construction-feature-actions{align-items:flex-start;flex-direction:column}.services .service{grid-template-columns:38px 1fr}}
+@media(max-width:640px){.construction-feature{min-height:70svh}.construction-feature-copy{padding:1.5rem}.construction-feature h2{font-size:clamp(2.7rem,13vw,4.8rem)}.construction-feature-actions{align-items:flex-start;flex-direction:column}.services .service{grid-template-columns:38px 1fr}.work-process .process-step h3{font-size:clamp(1.85rem,8vw,2.45rem)}}
