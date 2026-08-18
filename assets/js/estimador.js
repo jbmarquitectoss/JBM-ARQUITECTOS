@@ -19,19 +19,34 @@
 
   tabs.forEach(tab=>tab.addEventListener('click',()=>activate(tab.dataset.estimatorTab)));
 
-  function showResult(panel,{low,high,summary,details,scope,whatsapp,type}){
+  function showResult(panel,{low,high,summary,details,scope,whatsapp,type,displayMode='range'}){
     const empty=panel.querySelector('.estimator-result-empty');
     const content=panel.querySelector('.estimator-result-content');
     if(empty)empty.hidden=true;
     if(content)content.hidden=false;
-    panel.querySelector('[data-result-amount]').textContent=`${money(low)} – ${money(high)}`;
+
+    const amount=panel.querySelector('[data-result-amount]');
+    if(displayMode==='from'){
+      amount.textContent=`Desde ${money(low)}`;
+    }else if(Math.round(low)===Math.round(high)){
+      amount.textContent=money(low);
+    }else{
+      amount.textContent=`${money(low)} – ${money(high)}`;
+    }
+
     panel.querySelector('[data-result-copy]').textContent=summary;
     const detailBox=panel.querySelector('[data-result-details]');
     detailBox.innerHTML=details.map(([label,value])=>`<div><span>${label}</span><span>${value}</span></div>`).join('');
     panel.querySelector('[data-result-scope]').textContent=scope;
     const link=panel.querySelector('[data-result-whatsapp]');
     link.href=`https://wa.me/524423218552?text=${encodeURIComponent(whatsapp)}`;
-    if(typeof window.gtag==='function')window.gtag('event','estimator_result',{estimator_type:type,estimate_low:Math.round(low),estimate_high:Math.round(high),currency:'MXN'});
+
+    if(typeof window.gtag==='function')window.gtag('event','estimator_result',{
+      estimator_type:type,
+      estimate_low:Math.round(low),
+      estimate_high:Math.round(high),
+      currency:'MXN'
+    });
   }
 
   root.querySelector('[data-calc="executive"]')?.addEventListener('click',()=>{
@@ -40,12 +55,9 @@
     const levels=panel.querySelector('[name="exec-levels"]').value;
     if(!area||area<40){panel.querySelector('[name="exec-area"]').focus();return;}
 
-    // Referencia comercial JBM para proyecto ejecutivo de vivienda.
-    const unitRate=350;
-    const levelFactor={one:1,two:1.08,three:1.15}[levels]||1;
-    const base=Math.max(35000,area*unitRate*levelFactor);
-    const low=base*.9;
-    const high=base*1.1;
+    // Base comercial indicada por JBM ARQUITECTOS: $180 MXN/m².
+    const unitRate=180;
+    const base=area*unitRate;
     const levelLabel={one:'1 nivel',two:'2 niveles',three:'3 niveles o más'}[levels];
 
     const whatsapp=[
@@ -54,16 +66,25 @@
       'Servicio: Proyecto ejecutivo para casa habitación',
       `Superficie aproximada: ${area} m²`,
       `Niveles: ${levelLabel}`,
-      `Rango mostrado: ${money(low)} – ${money(high)}`,
+      `Base de cálculo: ${money(unitRate)} por m²`,
+      `Estimación base: ${money(base)}`,
       '',
       'Me gustaría recibir una cotización personalizada.'
     ].join('\n');
 
     showResult(panel,{
-      low,high,type:'executive',
-      summary:'Referencia preliminar para desarrollar los planos ejecutivos de una casa habitación. El alcance definitivo se confirma después de conocer el terreno y las necesidades del proyecto.',
-      details:[['Superficie',`${area} m²`],['Niveles',levelLabel],['Tipo','Proyecto ejecutivo']],
-      scope:'Base considerada: planos arquitectónicos, eléctricos, hidráulicos y sanitarios, criterio estructural y coordinación ejecutiva básica. No incluye cálculo estructural firmado, estudios, levantamiento, trámites, ingenierías especiales ni renders salvo cotización específica.',
+      low:base,
+      high:base,
+      type:'executive',
+      displayMode:'exact',
+      summary:`Estimación base calculada a ${money(unitRate)} por m² de proyecto. El precio definitivo se confirma después de revisar el terreno, alcance y necesidades específicas.`,
+      details:[
+        ['Superficie',`${area} m²`],
+        ['Niveles',levelLabel],
+        ['Base JBM',`${money(unitRate)} / m²`],
+        ['Tipo','Proyecto ejecutivo']
+      ],
+      scope:'Base considerada para proyecto ejecutivo de casa habitación. El alcance final y cualquier servicio adicional se definen en la cotización personalizada.',
       whatsapp
     });
   });
@@ -76,15 +97,9 @@
     const terrain=panel.querySelector('[name="build-terrain"]').value;
     if(!area||area<40){panel.querySelector('[name="build-area"]').focus();return;}
 
-    const rates={
-      standard:[11000,13500],
-      residential:[14500,18500],
-      premium:[19500,26000]
-    }[finish];
-    const levelFactor={one:1,two:1.05,three:1.12}[levels]||1;
-    const terrainFactor={flat:1,medium:1.05,slope:1.15}[terrain]||1;
-    const low=area*rates[0]*levelFactor*terrainFactor;
-    const high=area*rates[1]*levelFactor*terrainFactor;
+    // Base comercial indicada por JBM ARQUITECTOS: $12,000 MXN/m² de construcción.
+    const unitRate=12000;
+    const base=area*unitRate;
     const levelLabel={one:'1 nivel',two:'2 niveles',three:'3 niveles o más'}[levels];
     const finishLabel={standard:'Estándar contemporáneo',residential:'Residencial',premium:'Premium'}[finish];
     const terrainLabel={flat:'Plano / regular',medium:'Con desnivel moderado',slope:'Pendiente o condición especial'}[terrain];
@@ -97,16 +112,26 @@
       `Niveles: ${levelLabel}`,
       `Nivel de acabados: ${finishLabel}`,
       `Terreno: ${terrainLabel}`,
-      `Rango mostrado: ${money(low)} – ${money(high)}`,
+      `Base de cálculo: ${money(unitRate)} por m²`,
+      `Inversión base estimada: ${money(base)}`,
       '',
       'Me gustaría revisar mi proyecto y recibir una cotización personalizada.'
     ].join('\n');
 
     showResult(panel,{
-      low,high,type:'construction',
-      summary:'Rango preliminar de inversión para construcción de vivienda. El presupuesto real depende del proyecto ejecutivo, condiciones del suelo, sistema estructural, instalaciones, acabados y ubicación.',
-      details:[['Superficie',`${area} m²`],['Niveles',levelLabel],['Acabados',finishLabel],['Terreno',terrainLabel]],
-      scope:'Referencia de obra y acabados para casa habitación. No incluye terreno, proyecto y honorarios profesionales, permisos y derechos, estudios de suelo, mobiliario, paisajismo, alberca, obras exteriores especiales ni condiciones extraordinarias de cimentación.',
+      low:base,
+      high:base,
+      type:'construction',
+      displayMode:'from',
+      summary:`Inversión base calculada desde ${money(unitRate)} por m² de construcción. El presupuesto definitivo varía según proyecto ejecutivo, estructura, instalaciones, acabados, terreno y ubicación.`,
+      details:[
+        ['Superficie',`${area} m²`],
+        ['Niveles',levelLabel],
+        ['Acabados',finishLabel],
+        ['Terreno',terrainLabel],
+        ['Base JBM',`${money(unitRate)} / m²`]
+      ],
+      scope:'Referencia base de construcción de casa habitación. El precio final se ajusta según condiciones reales del proyecto. No incluye terreno, proyecto y honorarios profesionales, permisos y derechos, estudios de suelo, mobiliario, paisajismo, alberca, obras exteriores especiales ni condiciones extraordinarias de cimentación.',
       whatsapp
     });
   });
