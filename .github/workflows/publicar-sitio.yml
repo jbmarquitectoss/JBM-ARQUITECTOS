@@ -40,6 +40,7 @@ jobs:
             ./ _site/
           python tools/apply_jbm_21.py
           python tools/apply_estimator.py
+          python tools/apply_services.py
           python3 - <<'PY'
           from pathlib import Path
           import os
