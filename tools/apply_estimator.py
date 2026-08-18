@@ -9,14 +9,21 @@ js_tag = '<script src="assets/js/estimador.js"></script>'
 if css_tag not in html:
     html = html.replace('</head>', css_tag + '\n</head>', 1)
 
+# Eliminar Preguntas frecuentes para mantener una página más minimalista.
+faq_start = html.find('<section class="faq section" id="preguntas">')
+if faq_start != -1:
+    faq_end = html.find('</section>', faq_start)
+    if faq_end != -1:
+        html = html[:faq_start] + html[faq_end + len('</section>'):]
+
 section = r'''
 <section class="estimator-section section" id="estimador">
   <div class="section-top reveal">
-    <p class="index-label">09 / Estimador de inversión</p>
+    <p class="index-label">08 / Estimador de inversión</p>
     <p class="section-note">Una referencia inicial antes de preparar una cotización personalizada.</p>
   </div>
   <div class="estimator-intro">
-    <h2 class="display reveal">Conoce un rango aproximado para tu proyecto.</h2>
+    <h2 class="display reveal">Conoce una referencia aproximada para tu proyecto.</h2>
     <p class="reveal">Selecciona el servicio, introduce los datos básicos y obtén una referencia preliminar. El resultado no constituye una cotización definitiva.</p>
   </div>
   <div class="estimator-shell reveal">
@@ -45,10 +52,10 @@ section = r'''
           </div>
         </div>
         <div class="estimator-actions"><button class="estimator-calc" type="button" data-calc="executive">Calcular referencia</button></div>
-        <p class="estimator-disclaimer">Estimación preliminar. El precio final se define después de revisar terreno, programa arquitectónico, complejidad y alcance.</p>
+        <p class="estimator-disclaimer">Base JBM: $180 MXN/m² de diseño. Estimación preliminar sujeta a alcance, complejidad y condiciones del proyecto.</p>
       </div>
       <aside class="estimator-result" aria-live="polite">
-        <p class="estimator-result-empty">Completa los datos para conocer un rango estimado de inversión.</p>
+        <p class="estimator-result-empty">Completa los datos para conocer una referencia estimada de inversión.</p>
         <div class="estimator-result-content" hidden>
           <span class="estimator-result-eyebrow">Inversión estimada</span>
           <p class="estimator-result-amount" data-result-amount></p>
@@ -63,7 +70,7 @@ section = r'''
     <div class="estimator-panel" data-estimator-panel="construction">
       <div class="estimator-form">
         <h3>Construcción de casa habitación</h3>
-        <p>Calcula un rango preliminar según superficie, niveles, acabados y condición general del terreno.</p>
+        <p>Calcula una referencia inicial según la superficie aproximada de construcción.</p>
         <div class="estimator-fields">
           <div class="estimator-field">
             <label for="build-area">Superficie aproximada de construcción</label>
@@ -96,10 +103,10 @@ section = r'''
           </div>
         </div>
         <div class="estimator-actions"><button class="estimator-calc" type="button" data-calc="construction">Calcular referencia</button></div>
-        <p class="estimator-disclaimer">Estimación preliminar para vivienda. El presupuesto definitivo requiere proyecto ejecutivo, revisión del sitio y especificación de materiales.</p>
+        <p class="estimator-disclaimer">Base JBM: desde $12,000 MXN/m². El presupuesto definitivo requiere proyecto ejecutivo, revisión del sitio y especificación de materiales.</p>
       </div>
       <aside class="estimator-result" aria-live="polite">
-        <p class="estimator-result-empty">Completa los datos para conocer un rango estimado de inversión.</p>
+        <p class="estimator-result-empty">Completa los datos para conocer una referencia estimada de inversión.</p>
         <div class="estimator-result-content" hidden>
           <span class="estimator-result-eyebrow">Inversión estimada</span>
           <p class="estimator-result-amount" data-result-amount></p>
@@ -117,11 +124,14 @@ section = r'''
 if 'id="estimador"' not in html:
     marker = '<section class="cta-v4 section">'
     html = html.replace(marker, section + '\n' + marker, 1)
-    html = html.replace('09 / Tu proyecto', '10 / Tu proyecto', 1)
-    html = html.replace('10 / Contacto', '11 / Contacto', 1)
 
 if '<a href="#estimador">Estimador</a>' not in html:
     html = html.replace('<a href="#contacto">Contacto</a>', '<a href="#estimador">Estimador</a><a href="#contacto">Contacto</a>', 1)
+
+# Corregir numeración de versiones previas del despliegue.
+html = html.replace('09 / Estimador de inversión', '08 / Estimador de inversión')
+html = html.replace('10 / Tu proyecto', '09 / Tu proyecto')
+html = html.replace('11 / Contacto', '10 / Contacto')
 
 if js_tag not in html:
     html = html.replace('</body>', js_tag + '\n</body>', 1)
