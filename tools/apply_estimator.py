@@ -24,6 +24,8 @@ if reviews_start != -1:
         html = html[:reviews_start] + html[reviews_end + len('</section>'):]
 
 html = html.replace('<a href="#opiniones">Opiniones</a>', '')
+# Mantener la sección Estudio dentro de la página, pero quitar su acceso de la barra principal.
+html = html.replace('<a href="#estudio">Estudio</a>', '')
 
 section = r'''
 <section class="estimator-section section" id="estimador">
