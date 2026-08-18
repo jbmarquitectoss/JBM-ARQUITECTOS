@@ -38,15 +38,15 @@ html = html.replace('06 / Servicios', '05 / Servicios')
 services = '''<section class="services section" id="servicios"><div class="section-top reveal"><p class="index-label">05 / Servicios</p><p class="section-note">Diseño y construcción bajo una sola visión.</p></div><div class="service-rows"><article class="service reveal"><span>01</span><h3>Diseño arquitectónico</h3><p>Concepto, anteproyecto, distribución, materialidad y visualización 3D para definir el proyecto con claridad.</p></article><article class="service reveal"><span>02</span><h3>Proyecto ejecutivo</h3><p>Planos arquitectónicos y documentación técnica para llevar el diseño a una etapa lista para construcción.</p></article><article class="service reveal"><span>03</span><h3>Construcción residencial</h3><p>Ejecución integral de casa habitación residencial, coordinando obra, calidad, tiempos y decisiones de proyecto.</p></article><article class="service reveal"><span>04</span><h3>Interiorismo</h3><p>Materiales, iluminación, mobiliario y atmósferas integradas al lenguaje arquitectónico.</p></article><article class="service reveal"><span>05</span><h3>Supervisión de obra</h3><p>Seguimiento técnico para proteger la intención del proyecto durante su ejecución.</p></article></div></section>'''
 html = re.sub(r'<section class="services section" id="servicios">.*?</section>', services, html, count=1, flags=re.S)
 
-# Estimador, CTA y contacto siguen la nueva secuencia.
+# Estimador y contacto siguen la nueva secuencia.
 for old in ('07 / Estimador de inversión', '08 / Estimador de inversión'):
     html = html.replace(old, '06 / Estimador de inversión')
 
-cta = '''<section class="cta-v4 section"><div><p class="index-label reveal">07 / Tu proyecto</p><h2 class="display reveal">Hablemos de tu próximo proyecto.</h2><div class="hero-actions reveal"><a class="btn btn-light" href="https://calendar.app.google/h7XwWw9xizAmMNz38" target="_blank" rel="noopener">Agendar una reunión ↗</a><a class="underlink" href="https://wa.me/524423218552?text=Hola%20JBM%20ARQUITECTOS,%20quiero%20platicar%20sobre%20mi%20proyecto." target="_blank" rel="noopener">Escribir por WhatsApp ↗</a></div></div></section>'''
-html = re.sub(r'<section class="cta-v4 section">.*?</section>', cta, html, count=1, flags=re.S)
+# Eliminar el CTA "Tu proyecto" porque duplica la función de Contacto.
+html = re.sub(r'<section class="cta-v4 section">.*?</section>', '', html, count=1, flags=re.S)
 
-for old in ('09 / Contacto', '10 / Contacto'):
-    html = html.replace(old, '08 / Contacto')
+for old in ('08 / Contacto', '09 / Contacto', '10 / Contacto'):
+    html = html.replace(old, '07 / Contacto')
 html = html.replace('Arquitectura · Interiorismo · Proyecto integral', 'Arquitectura · Construcción · Interiorismo')
 
 path.write_text(html, encoding='utf-8')
