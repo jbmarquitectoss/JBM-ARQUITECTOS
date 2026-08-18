@@ -1,0 +1,44 @@
+/* JBM ARQUITECTOS — Estimador de inversión */
+.estimator-section{background:#f3efe6;color:#11110f}
+.estimator-intro{max-width:760px;margin:0 0 3rem}
+.estimator-intro h2{margin:.4rem 0 1rem}
+.estimator-intro p{max-width:680px;color:var(--muted);margin:0}
+.estimator-shell{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.estimator-tabs{display:grid;grid-template-columns:1fr 1fr;border-left:1px solid var(--line)}
+.estimator-tab{appearance:none;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:transparent;color:var(--ink);padding:1.25rem 1.4rem;text-align:left;font:inherit;cursor:pointer;transition:background .25s ease,color .25s ease}
+.estimator-tab span{display:block;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+.estimator-tab strong{font-family:var(--display);font-weight:400;font-size:clamp(1.3rem,2vw,2rem)}
+.estimator-tab[aria-selected="true"]{background:#11110f;color:#fff}
+.estimator-tab[aria-selected="true"] span{color:rgba(255,255,255,.58)}
+.estimator-panel{display:none}
+.estimator-panel.active{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.72fr);min-height:560px}
+.estimator-form{padding:clamp(1.6rem,4vw,3.2rem);border-left:1px solid var(--line)}
+.estimator-form h3{font-family:var(--display);font-size:clamp(2rem,3.5vw,3.7rem);font-weight:400;line-height:1.03;margin:0 0 1rem}
+.estimator-form>p{max-width:620px;color:var(--muted);margin:0 0 2.2rem}
+.estimator-fields{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.estimator-field{display:grid;gap:.55rem}
+.estimator-field.full{grid-column:1/-1}
+.estimator-field label{font-size:.66rem;letter-spacing:.13em;text-transform:uppercase}
+.estimator-field input,.estimator-field select{width:100%;box-sizing:border-box;border:1px solid rgba(17,17,15,.22);background:rgba(255,255,255,.45);color:#11110f;border-radius:0;padding:.95rem 1rem;font:inherit;min-height:52px}
+.estimator-field input:focus,.estimator-field select:focus{outline:2px solid rgba(17,17,15,.32);outline-offset:2px}
+.estimator-help{font-size:.78rem;color:var(--muted)}
+.estimator-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-top:2rem}
+.estimator-calc{appearance:none;border:1px solid #11110f;background:#11110f;color:#fff;padding:.95rem 1.35rem;font:inherit;cursor:pointer;transition:transform .25s ease,background .25s ease}
+.estimator-calc:hover{transform:translateY(-2px)}
+.estimator-disclaimer{font-size:.76rem;color:var(--muted);max-width:520px;margin-top:1.5rem}
+.estimator-result{padding:clamp(1.6rem,4vw,3.2rem);background:#11110f;color:#fff;display:flex;flex-direction:column;justify-content:space-between}
+.estimator-result-empty{margin:auto 0;color:rgba(255,255,255,.6);max-width:330px}
+.estimator-result-content[hidden]{display:none}
+.estimator-result-eyebrow{display:block;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.52);margin-bottom:1rem}
+.estimator-result-amount{font-family:var(--display);font-size:clamp(2.6rem,5vw,5rem);line-height:.95;font-weight:400;letter-spacing:-.02em;margin:0 0 1.2rem}
+.estimator-result-copy{color:rgba(255,255,255,.68);max-width:430px;margin:0 0 1.5rem}
+.estimator-result-details{display:grid;gap:.7rem;padding-top:1.3rem;border-top:1px solid rgba(255,255,255,.18);margin-top:1.4rem}
+.estimator-result-details div{display:flex;justify-content:space-between;gap:1rem;font-size:.82rem}
+.estimator-result-details span:first-child{color:rgba(255,255,255,.5)}
+.estimator-whatsapp{display:inline-flex;width:max-content;margin-top:2rem;color:#11110f;background:#fff;padding:.95rem 1.2rem;text-decoration:none;transition:transform .25s ease}
+.estimator-whatsapp:hover{transform:translateY(-2px)}
+.estimator-scope{margin-top:2rem;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.18)}
+.estimator-scope strong{display:block;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.8rem}
+.estimator-scope p{color:rgba(255,255,255,.62);font-size:.82rem;margin:0;line-height:1.65}
+@media(max-width:900px){.estimator-panel.active{grid-template-columns:1fr}.estimator-result{min-height:420px}.estimator-fields{grid-template-columns:1fr}.estimator-field.full{grid-column:auto}}
+@media(max-width:640px){.estimator-tabs{grid-template-columns:1fr}.estimator-tab{padding:1.05rem 1.1rem}.estimator-form,.estimator-result{padding:1.5rem}.estimator-result{min-height:360px}.estimator-result-details div{display:grid;gap:.2rem}.estimator-whatsapp{width:100%;box-sizing:border-box;justify-content:center;text-align:center}}
