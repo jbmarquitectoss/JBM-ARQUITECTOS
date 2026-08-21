@@ -16,5 +16,27 @@
 .cta-v4{min-height:58svh!important}
 .cta-v4 .display{max-width:900px!important}
 @media(max-width:1000px){.work-process .process-step h3{font-size:clamp(1.9rem,4vw,2.6rem)}}
-@media(max-width:900px){.construction-feature{min-height:62svh}.services .service{grid-template-columns:52px 1fr}.services .service p{grid-column:2}}
-@media(max-width:640px){.construction-feature{min-height:70svh}.construction-feature-copy{padding:1.5rem}.construction-feature h2{font-size:clamp(2.7rem,13vw,4.8rem)}.construction-feature-actions{align-items:flex-start;flex-direction:column}.services .service{grid-template-columns:38px 1fr}.work-process .process-step h3{font-size:clamp(1.85rem,8vw,2.45rem)}}
+@media(max-width:900px){
+  .construction-feature{min-height:62svh}
+  .services .service{grid-template-columns:52px 1fr}
+  .services .service p{grid-column:2}
+  .header{height:76px;padding-left:1.25rem;padding-right:1.25rem}
+  .header.scrolled{height:68px}
+  .logo{width:min(230px,64vw)}
+  .menu{inset:0;min-height:100dvh;height:100dvh;padding:7.5rem 1.5rem calc(7rem + env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:0;overflow-y:auto;background:#11110f;color:#fff}
+  .menu a{width:100%;padding:1.05rem 0;border-bottom:1px solid rgba(255,255,255,.18);font-family:var(--display);font-size:clamp(2rem,9vw,3.2rem);line-height:1.02;letter-spacing:-.025em;text-transform:none;white-space:nowrap}
+  .menu a:after{display:none}
+  .menu .menu-booking{margin-top:.9rem;padding:1rem 1.1rem;border:1px solid rgba(255,255,255,.55);font-family:var(--sans);font-size:.78rem;line-height:1.2;letter-spacing:.14em;text-transform:uppercase;width:auto;white-space:nowrap}
+  .menu-toggle{flex:0 0 42px}
+}
+@media(max-width:640px){
+  .construction-feature{min-height:70svh}
+  .construction-feature-copy{padding:1.5rem}
+  .construction-feature h2{font-size:clamp(2.7rem,13vw,4.8rem)}
+  .construction-feature-actions{align-items:flex-start;flex-direction:column}
+  .services .service{grid-template-columns:38px 1fr}
+  .work-process .process-step h3{font-size:clamp(1.85rem,8vw,2.45rem)}
+  .menu{padding-top:6.8rem;padding-left:1.35rem;padding-right:1.35rem;padding-bottom:calc(7.5rem + env(safe-area-inset-bottom))}
+  .menu a{font-size:clamp(2rem,10.5vw,3rem);padding:.95rem 0}
+  .menu .menu-booking{font-size:.72rem;padding:.95rem 1rem}
+}
