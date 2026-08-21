@@ -8,8 +8,8 @@ css_tag = '<link href="assets/css/refinement.css" rel="stylesheet"/>'
 if css_tag not in html:
     html = html.replace('</head>', css_tag + '\n</head>', 1)
 
-# Menú: solo lo esencial.
-menu = '''<nav class="menu" id="main-menu"><a href="#proyectos">Portafolio</a><a href="#servicios">Servicios</a><a href="#estimador">Estimador</a><a class="menu-booking" href="https://calendar.app.google/h7XwWw9xizAmMNz38" rel="noopener" target="_blank">Agendar cita ↗</a></nav>'''
+# Menú: accesos principales y contacto directo.
+menu = '''<nav class="menu" id="main-menu"><a href="#proyectos">Portafolio</a><a href="#servicios">Servicios</a><a href="#estimador">Estimador</a><a href="#contacto">Contacto</a><a class="menu-booking" href="https://calendar.app.google/h7XwWw9xizAmMNz38" rel="noopener" target="_blank">Agendar cita ↗</a></nav>'''
 html = re.sub(r'<nav class="menu" id="main-menu">.*?</nav>', menu, html, count=1, flags=re.S)
 
 # Hero y portafolio.
