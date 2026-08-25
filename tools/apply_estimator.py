@@ -39,14 +39,14 @@ section = r'''
   </div>
   <div class="estimator-shell reveal">
     <div class="estimator-tabs" role="tablist" aria-label="Tipo de estimación">
-      <button class="estimator-tab" type="button" role="tab" aria-selected="true" data-estimator-tab="executive"><span>01</span><strong>Proyecto ejecutivo</strong></button>
+      <button class="estimator-tab" type="button" role="tab" aria-selected="true" data-estimator-tab="executive"><span>01</span><strong>Planos arquitectónicos</strong></button>
       <button class="estimator-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-estimator-tab="construction"><span>02</span><strong>Construcción de casa</strong></button>
     </div>
 
     <div class="estimator-panel active" data-estimator-panel="executive">
       <div class="estimator-form">
-        <h3>Proyecto ejecutivo para planos</h3>
-        <p>Obtén una referencia para desarrollar la documentación necesaria de una casa habitación.</p>
+        <h3>Planos arquitectónicos</h3>
+        <p>Calcula una referencia para el diseño arquitectónico de una casa habitación.</p>
         <div class="estimator-fields">
           <div class="estimator-field">
             <label for="exec-area">Superficie aproximada de construcción</label>
@@ -63,7 +63,7 @@ section = r'''
           </div>
         </div>
         <div class="estimator-actions"><button class="estimator-calc" type="button" data-calc="executive">Calcular referencia</button></div>
-        <p class="estimator-disclaimer">Base JBM: $180 MXN/m² de diseño. Estimación preliminar sujeta a alcance, complejidad y condiciones del proyecto.</p>
+        <p class="estimator-disclaimer">Base JBM: diseño arquitectónico desde $120 MXN/m² para casa habitación. No incluye planos hidrosanitarios, eléctricos, estructurales ni firma DRO.</p>
       </div>
       <aside class="estimator-result" aria-live="polite">
         <p class="estimator-result-empty">Completa los datos para conocer una referencia estimada de inversión.</p>
