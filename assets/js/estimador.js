@@ -55,19 +55,21 @@
     const levels=panel.querySelector('[name="exec-levels"]').value;
     if(!area||area<40){panel.querySelector('[name="exec-area"]').focus();return;}
 
-    // Base comercial indicada por JBM ARQUITECTOS: $180 MXN/m².
-    const unitRate=180;
+    // Base comercial indicada por JBM ARQUITECTOS: diseño arquitectónico desde $120 MXN/m².
+    const unitRate=120;
     const base=area*unitRate;
     const levelLabel={one:'1 nivel',two:'2 niveles',three:'3 niveles o más'}[levels];
 
     const whatsapp=[
       'Hola JBM ARQUITECTOS, utilicé el estimador de su página.',
       '',
-      'Servicio: Proyecto ejecutivo para casa habitación',
+      'Servicio: Planos arquitectónicos para casa habitación',
       `Superficie aproximada: ${area} m²`,
       `Niveles: ${levelLabel}`,
-      `Base de cálculo: ${money(unitRate)} por m²`,
-      `Estimación base: ${money(base)}`,
+      `Base de cálculo: desde ${money(unitRate)} por m²`,
+      `Estimación base: desde ${money(base)}`,
+      '',
+      'Entiendo que esta referencia corresponde únicamente a diseño arquitectónico y no incluye planos hidrosanitarios, eléctricos, estructurales ni firma DRO.',
       '',
       'Me gustaría recibir una cotización personalizada.'
     ].join('\n');
@@ -75,16 +77,16 @@
     showResult(panel,{
       low:base,
       high:base,
-      type:'executive',
-      displayMode:'exact',
-      summary:`Estimación base calculada a ${money(unitRate)} por m² de proyecto. El precio definitivo se confirma después de revisar el terreno, alcance y necesidades específicas.`,
+      type:'architectural_plans',
+      displayMode:'from',
+      summary:`Referencia calculada desde ${money(unitRate)} por m² para diseño arquitectónico de casa habitación. El precio definitivo se confirma después de revisar superficie, alcance y necesidades del proyecto.`,
       details:[
         ['Superficie',`${area} m²`],
         ['Niveles',levelLabel],
-        ['Base JBM',`${money(unitRate)} / m²`],
-        ['Tipo','Proyecto ejecutivo']
+        ['Base JBM',`Desde ${money(unitRate)} / m²`],
+        ['Servicio','Planos arquitectónicos']
       ],
-      scope:'Base considerada para proyecto ejecutivo de casa habitación. El alcance final y cualquier servicio adicional se definen en la cotización personalizada.',
+      scope:'Incluye únicamente diseño arquitectónico para casa habitación. No incluye planos hidrosanitarios, eléctricos, estructurales ni firma DRO. Cualquier servicio adicional se cotiza por separado.',
       whatsapp
     });
   });
