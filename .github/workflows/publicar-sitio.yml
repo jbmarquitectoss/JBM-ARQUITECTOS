@@ -38,6 +38,8 @@ jobs:
             --exclude='_site' \
             --exclude='tools' \
             ./ _site/
+          base64 --decode _site/assets/images/bryan-fundador.webp.b64 > _site/assets/images/bryan-fundador.webp
+          rm -f _site/assets/images/bryan-fundador.webp.b64
           python tools/apply_jbm_21.py
           python tools/apply_estimator.py
           python tools/apply_services.py
@@ -67,6 +69,7 @@ jobs:
           s = s.replace('assets/js/estimador.js', f'assets/js/estimador.js?v={version}')
           s = s.replace('assets/css/refinement.css', f'assets/css/refinement.css?v={version}')
           s = s.replace('assets/css/founder.css', f'assets/css/founder.css?v={version}')
+          s = s.replace('assets/images/bryan-fundador.webp', f'assets/images/bryan-fundador.webp?v={version}')
           p.write_text(s, encoding='utf-8')
 
           analytics_tag = f'<script src="assets/js/analytics.js?v={version}"></script>'
