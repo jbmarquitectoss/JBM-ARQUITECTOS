@@ -42,6 +42,7 @@ jobs:
           python tools/apply_estimator.py
           python tools/apply_services.py
           python tools/apply_refinement.py
+          python tools/apply_founder.py
           python3 - <<'PY'
           from pathlib import Path
           import os
@@ -65,6 +66,7 @@ jobs:
           s = s.replace('assets/css/estimador.css', f'assets/css/estimador.css?v={version}')
           s = s.replace('assets/js/estimador.js', f'assets/js/estimador.js?v={version}')
           s = s.replace('assets/css/refinement.css', f'assets/css/refinement.css?v={version}')
+          s = s.replace('assets/css/founder.css', f'assets/css/founder.css?v={version}')
           p.write_text(s, encoding='utf-8')
 
           analytics_tag = f'<script src="assets/js/analytics.js?v={version}"></script>'
