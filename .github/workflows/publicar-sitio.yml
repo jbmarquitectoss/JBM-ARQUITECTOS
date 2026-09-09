@@ -39,8 +39,23 @@ jobs:
             --exclude='tools' \
             ./ _site/
           cat _site/assets/images/bryan-fundador.part1 _site/assets/images/bryan-fundador.part2 | base64 --decode > _site/assets/images/bryan-fundador.webp
-          test "$(wc -c < _site/assets/images/bryan-fundador.webp)" -eq 21938
-          test "$(head -c 4 _site/assets/images/bryan-fundador.webp)" = "RIFF"
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+
+          photo = Path('_site/assets/images/bryan-fundador.webp')
+          data = bytearray(photo.read_bytes())
+          if len(data) != 21938:
+              raise RuntimeError(f'Tamaño inesperado de foto: {len(data)} bytes')
+          # Corrige el único byte alterado durante la transferencia del archivo.
+          data[1960] = 0xCA
+          photo.write_bytes(data)
+          digest = hashlib.sha256(data).hexdigest()
+          expected = '2fd696634b74fe9bd4a046438b9523c8d320a103b94fa0969a13a93da73938db'
+          if digest != expected:
+              raise RuntimeError(f'Foto del fundador no coincide con el original: {digest}')
+          print('Foto del fundador validada:', digest)
+          PY
           rm -f _site/assets/images/bryan-fundador.part1 _site/assets/images/bryan-fundador.part2 _site/assets/images/bryan-fundador.webp.b64
           python tools/apply_jbm_21.py
           python tools/apply_estimator.py
