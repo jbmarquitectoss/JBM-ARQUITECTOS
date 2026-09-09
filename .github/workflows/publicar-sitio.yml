@@ -38,8 +38,10 @@ jobs:
             --exclude='_site' \
             --exclude='tools' \
             ./ _site/
-          base64 --decode _site/assets/images/bryan-fundador.webp.b64 > _site/assets/images/bryan-fundador.webp
-          rm -f _site/assets/images/bryan-fundador.webp.b64
+          cat _site/assets/images/bryan-fundador.part1 _site/assets/images/bryan-fundador.part2 | base64 --decode > _site/assets/images/bryan-fundador.webp
+          test "$(wc -c < _site/assets/images/bryan-fundador.webp)" -eq 21938
+          test "$(head -c 4 _site/assets/images/bryan-fundador.webp)" = "RIFF"
+          rm -f _site/assets/images/bryan-fundador.part1 _site/assets/images/bryan-fundador.part2 _site/assets/images/bryan-fundador.webp.b64
           python tools/apply_jbm_21.py
           python tools/apply_estimator.py
           python tools/apply_services.py
