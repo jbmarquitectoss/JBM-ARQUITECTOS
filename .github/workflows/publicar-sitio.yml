@@ -39,22 +39,36 @@ jobs:
             --exclude='tools' \
             ./ _site/
           cat _site/assets/images/bryan-fundador.part1 _site/assets/images/bryan-fundador.part2 | base64 --decode > _site/assets/images/bryan-fundador.webp
+          python3 -m pip install --quiet pillow
           python3 - <<'PY'
           from pathlib import Path
           import hashlib
+          from PIL import Image, ImageFilter
 
           photo = Path('_site/assets/images/bryan-fundador.webp')
           data = bytearray(photo.read_bytes())
           if len(data) != 21938:
               raise RuntimeError(f'Tamaño inesperado de foto: {len(data)} bytes')
-          # Corrige el único byte alterado durante la transferencia del archivo.
+          # Corrige el único byte alterado durante la transferencia del archivo original.
           data[1960] = 0xCA
           photo.write_bytes(data)
           digest = hashlib.sha256(data).hexdigest()
           expected = '2fd696634b74fe9bd4a046438b9523c8d320a103b94fa0969a13a93da73938db'
           if digest != expected:
               raise RuntimeError(f'Foto del fundador no coincide con el original: {digest}')
-          print('Foto del fundador validada:', digest)
+
+          # Preparar una versión de mayor densidad para pantallas Retina y evitar
+          # que el navegador amplíe directamente el archivo comprimido.
+          with Image.open(photo) as source:
+              source = source.convert('RGB')
+              width, height = source.size
+              target_width = max(width * 2, 1800)
+              scale = target_width / width
+              target_size = (round(width * scale), round(height * scale))
+              enhanced = source.resize(target_size, Image.Resampling.LANCZOS)
+              enhanced = enhanced.filter(ImageFilter.UnsharpMask(radius=1.1, percent=105, threshold=3))
+              enhanced.save(photo, 'WEBP', quality=91, method=6)
+              print('Foto fundador optimizada:', source.size, '→', target_size, photo.stat().st_size, 'bytes')
           PY
           rm -f _site/assets/images/bryan-fundador.part1 _site/assets/images/bryan-fundador.part2 _site/assets/images/bryan-fundador.webp.b64
           python tools/apply_jbm_21.py
@@ -86,6 +100,7 @@ jobs:
           s = s.replace('assets/js/estimador.js', f'assets/js/estimador.js?v={version}')
           s = s.replace('assets/css/refinement.css', f'assets/css/refinement.css?v={version}')
           s = s.replace('assets/css/founder.css', f'assets/css/founder.css?v={version}')
+          s = s.replace('assets/css/portfolio-editorial.css', f'assets/css/portfolio-editorial.css?v={version}')
           s = s.replace('assets/images/bryan-fundador.webp', f'assets/images/bryan-fundador.webp?v={version}')
           p.write_text(s, encoding='utf-8')
 
