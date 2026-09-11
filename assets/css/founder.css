@@ -1,7 +1,7 @@
 /* JBM ARQUITECTOS — fundador */
-.studio.founder-studio{grid-template-columns:minmax(360px,.9fr) minmax(0,1.1fr);background:#11110f;color:#fff}
-.founder-studio .studio-image{min-height:760px;overflow:hidden}
-.founder-studio .studio-image img{width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:grayscale(1) contrast(1.03)}
+.studio.founder-studio{grid-template-columns:minmax(360px,560px) minmax(0,1fr);background:#11110f;color:#fff}
+.founder-studio .studio-image{min-height:760px;max-height:900px;overflow:hidden;background:#0d0d0c}
+.founder-studio .studio-image img{width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:grayscale(1) contrast(1.04);image-rendering:auto;backface-visibility:hidden}
 .founder-studio .studio-copy{padding-top:clamp(5rem,8vw,9rem);padding-bottom:clamp(5rem,8vw,9rem)}
 .founder-studio .display{max-width:760px;font-size:clamp(3.1rem,5.8vw,6.4rem)}
 .founder-name{margin:2.4rem 0 .3rem!important;color:#fff!important;font-size:.83rem!important;font-weight:500;letter-spacing:.15em;text-transform:uppercase}
@@ -9,5 +9,6 @@
 .founder-studio .founder-bio{max-width:650px!important;margin:.9rem 0!important;color:rgba(255,255,255,.66)!important;font-size:1rem;line-height:1.75}
 .founder-disciplines{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
 .founder-disciplines span{padding:.6rem .8rem;border:1px solid rgba(255,255,255,.22);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72)}
-@media(max-width:900px){.studio.founder-studio{grid-template-columns:1fr}.founder-studio .studio-image{min-height:72svh}.founder-studio .studio-image img{object-position:center 20%}}
+@media(max-width:1100px){.studio.founder-studio{grid-template-columns:minmax(330px,46vw) minmax(0,1fr)}}
+@media(max-width:900px){.studio.founder-studio{grid-template-columns:1fr}.founder-studio .studio-image{min-height:72svh;max-height:none}.founder-studio .studio-image img{object-position:center 20%}}
 @media(max-width:640px){.founder-studio .studio-image{min-height:68svh}.founder-studio .studio-copy{padding-top:4rem;padding-bottom:4rem}.founder-studio .display{font-size:clamp(3rem,13vw,4.6rem)}.founder-name{margin-top:2rem!important}.founder-disciplines{flex-direction:column;align-items:flex-start}}
