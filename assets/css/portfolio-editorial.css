@@ -1,0 +1,172 @@
+/* JBM ARQUITECTOS — Portafolio editorial */
+.projects{
+  background:#f6f2ea;
+  padding-top:clamp(7rem,11vw,12rem);
+  padding-bottom:clamp(8rem,13vw,14rem);
+}
+.projects .portfolio-editorial-head{
+  display:grid;
+  grid-template-columns:minmax(0,1.45fr) minmax(250px,.55fr);
+  align-items:end;
+  gap:clamp(2.5rem,7vw,8rem);
+  margin-bottom:clamp(4.5rem,9vw,9rem);
+}
+.projects .portfolio-editorial-head .index-label{margin-bottom:1.15rem}
+.projects .portfolio-heading{
+  margin:0;
+  font-size:clamp(4.8rem,11.5vw,12rem);
+  line-height:.78;
+  letter-spacing:-.055em;
+  font-weight:400;
+}
+.portfolio-editorial-note{
+  display:grid;
+  gap:1.25rem;
+  align-self:end;
+  padding-bottom:.3rem;
+}
+.portfolio-editorial-note p{
+  margin:0;
+  max-width:330px;
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.7;
+}
+.portfolio-editorial-note span{
+  display:block;
+  padding-top:1rem;
+  border-top:1px solid var(--line);
+  font-size:.61rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.portfolio-editorial-note .underlink{width:max-content}
+
+.portfolio-grid{
+  display:flex;
+  flex-direction:column;
+  gap:clamp(8rem,14vw,15rem);
+}
+.portfolio-card{
+  position:relative;
+  margin:0;
+}
+.portfolio-card:first-child{width:100%}
+.portfolio-card:nth-child(2){width:min(72%,980px);margin-left:auto}
+
+.projects .project-media{
+  height:auto;
+  overflow:hidden;
+  background:#d9d4ca;
+  border-radius:0;
+}
+.projects .portfolio-card:first-child .project-media{aspect-ratio:16/9}
+.projects .portfolio-card:nth-child(2) .project-media{aspect-ratio:4/3}
+.projects .project-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(1.001);
+  filter:saturate(.9) contrast(1.015);
+  transition:transform 1.2s cubic-bezier(.2,.7,.2,1),filter .5s ease;
+}
+.projects .project-media:hover img{transform:scale(1.025);filter:saturate(1) contrast(1.02)}
+.projects .project-media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(10,10,9,.24));
+  opacity:.4;
+  pointer-events:none;
+  transition:opacity .45s ease;
+}
+.projects .project-media:hover::after{opacity:.65}
+.projects .view-pill{
+  right:1.35rem;
+  bottom:1.35rem;
+  z-index:2;
+  background:rgba(246,242,234,.94);
+  border:1px solid rgba(17,17,15,.12);
+  padding:.8rem 1rem;
+  font-size:.6rem;
+  letter-spacing:.16em;
+  backdrop-filter:blur(8px);
+}
+
+.projects .featured-meta{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(240px,.45fr);
+  gap:clamp(2rem,6vw,6rem);
+  align-items:start;
+  padding:1.6rem 0 0;
+  border-bottom:0;
+}
+.projects .featured-meta>div:first-child{
+  display:grid;
+  grid-template-columns:52px 1fr;
+  gap:1rem;
+  align-items:start;
+}
+.projects .featured-meta span{
+  padding-top:.55rem;
+  font-size:.62rem;
+  letter-spacing:.2em;
+  color:var(--muted);
+}
+.projects .featured-meta h2{
+  margin:0;
+  font-size:clamp(3.2rem,7vw,7.8rem);
+  line-height:.88;
+  letter-spacing:-.045em;
+}
+.projects .meta-right{
+  text-align:left;
+  padding-top:.5rem;
+  border-top:1px solid var(--line);
+}
+.projects .meta-right p{
+  margin:.2rem 0;
+  font-size:.61rem;
+  line-height:1.55;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.projects .portfolio-card:nth-child(2)::before{
+  content:"02";
+  position:absolute;
+  left:calc(-1 * clamp(4rem,10vw,10rem));
+  top:0;
+  font-family:var(--display);
+  font-size:clamp(3.8rem,8vw,8rem);
+  line-height:.75;
+  color:rgba(17,17,15,.13);
+  pointer-events:none;
+}
+.projects .portfolio-card:nth-child(2) .featured-meta>div:first-child>span{visibility:hidden}
+
+@media(max-width:900px){
+  .projects .portfolio-editorial-head{grid-template-columns:1fr;align-items:start}
+  .portfolio-editorial-note{max-width:500px}
+  .portfolio-card:nth-child(2){width:84%}
+  .projects .featured-meta{grid-template-columns:1fr .55fr}
+}
+
+@media(max-width:640px){
+  .projects{padding-top:6rem;padding-bottom:7rem}
+  .projects .portfolio-editorial-head{gap:2rem;margin-bottom:4.2rem}
+  .projects .portfolio-heading{font-size:clamp(3.6rem,19vw,5.7rem);line-height:.84}
+  .portfolio-editorial-note{gap:1rem}
+  .portfolio-grid{gap:6.5rem}
+  .portfolio-card:nth-child(2){width:100%;margin-left:0}
+  .projects .portfolio-card:first-child .project-media,
+  .projects .portfolio-card:nth-child(2) .project-media{aspect-ratio:4/5}
+  .projects .featured-meta{grid-template-columns:1fr;gap:1.25rem;padding-top:1.25rem}
+  .projects .featured-meta>div:first-child{grid-template-columns:38px 1fr;gap:.6rem}
+  .projects .featured-meta h2{font-size:clamp(2.8rem,14vw,4.5rem)}
+  .projects .meta-right{margin-left:38px}
+  .projects .portfolio-card:nth-child(2)::before{display:none}
+  .projects .portfolio-card:nth-child(2) .featured-meta>div:first-child>span{visibility:visible}
+  .projects .view-pill{right:.8rem;bottom:.8rem}
+}
