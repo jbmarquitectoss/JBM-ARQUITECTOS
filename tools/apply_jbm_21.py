@@ -21,6 +21,10 @@ css = r'''
 if "/* JBM 2.1 refinements */" not in html:
     html = html.replace("</style>", css + "\n</style>", 1)
 
+portfolio_css = '<link href="assets/css/portfolio-editorial.css" rel="stylesheet"/>'
+if portfolio_css not in html:
+    html = html.replace('</head>', portfolio_css + '\n</head>', 1)
+
 map_block = '''
 <div class="review-map reveal">
   <iframe title="Ubicación de JBM ARQUITECTOS en San José Iturbide" src="https://www.google.com/maps?q=20.9935165,-100.3944233&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
@@ -46,12 +50,12 @@ if "class=\"footer-links\"" not in html:
     footer_replacement = '''<div><p>Arquitectura · Interiorismo · Proyecto integral</p><p>© <span data-year=""></span> JBM ARQUITECTOS</p><div class="footer-links"><a href="https://www.instagram.com/jbmarquitectos.mx/" target="_blank" rel="noopener">Instagram</a><a href="https://maps.app.goo.gl/k8FFsKT5fi1p92pv8" target="_blank" rel="noopener">Google Maps</a><a href="https://wa.me/524423218552" target="_blank" rel="noopener">WhatsApp</a><a href="https://calendar.app.google/h7XwWw9xizAmMNz38" target="_blank" rel="noopener">Agendar cita</a></div></div>'''
     html = html.replace(footer_marker, footer_replacement, 1)
 
-# Identidad de la sección de portafolio
+# Identidad y composición editorial de la sección de portafolio
 html = html.replace('<a href="#proyectos">Proyectos</a>', '<a href="#proyectos">Portafolio</a>', 1)
 html = html.replace('>Explorar proyectos</a>', '>Explorar portafolio</a>', 1)
 html = html.replace(
     '<div class="section-top reveal"><p class="index-label">02 / Proyectos seleccionados</p><a class="underlink dark" href="#contacto">Iniciar un proyecto ↗</a></div>',
-    '<div class="section-top reveal"><div><p class="index-label">02 / Portafolio</p><h2 class="display portfolio-heading">PORTAFOLIO</h2></div><a class="underlink dark" href="#contacto">Iniciar un proyecto ↗</a></div>',
+    '<div class="section-top portfolio-editorial-head reveal"><div><p class="index-label">02 / Portafolio</p><h2 class="display portfolio-heading">PORTAFOLIO</h2></div><div class="portfolio-editorial-note"><p>Una selección de arquitectura residencial desarrollada desde el concepto hasta su materialización.</p><span>Selección · 2024—2026</span><a class="underlink dark" href="#contacto">Iniciar un proyecto ↗</a></div></div>',
     1
 )
 
