@@ -80,7 +80,7 @@ jobs:
           touch _site/.nojekyll
 
       - name: Subir archivos del sitio
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: _site
 
